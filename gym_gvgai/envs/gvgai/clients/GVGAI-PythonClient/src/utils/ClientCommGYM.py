@@ -370,6 +370,16 @@ class ClientCommGYM:
         else:
             shutil.copyfile(path, lvlName)
 
+    """
+     * Manages the resource garbage collection when the environment is closed
+    """
+
+    def close(self):
+        try:
+            self.java.kill()
+        except:
+            pass
+
     def __del__(self):
         try:
             self.java.kill()

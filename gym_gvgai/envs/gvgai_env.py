@@ -93,6 +93,8 @@ class GVGAI_Env(gym.Env):
         if self.viewer is not None:
             self.viewer.close()
             self.viewer = None
+        # Also shutdown the Java server
+        self.GVGAI.close()
 
     #Expects path string or int value
     def _setLevel(self, level):
